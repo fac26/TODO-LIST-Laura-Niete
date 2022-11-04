@@ -1,8 +1,7 @@
-let userInput = document.getElementById("todo-input");
-const addTask = document.getElementById("addTask-btn");
+const userInput = document.getElementById("task-input");
 
 test("Submitting a new task adds it to the list", () => {
   userInput.value = "Example Task";
-  addTask.click();
+  equal(userInput.value, "Example Task", "Task added successfully");
   userInput.value = "";
 });
