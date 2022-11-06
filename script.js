@@ -6,6 +6,7 @@ const taskList = document.getElementById("tasklist");
 //Event listeners
 taskBtn.addEventListener("click", addTask);
 
+
 //number of items in list so far
 let count = 0;
 
@@ -37,6 +38,9 @@ function addTask(event) {
   trashButton.innerHTML = '<i class="fas fa-trash"></i>';
   trashButton.classList.add("trash-btn");
   taskDiv.appendChild(trashButton);
+  trashButton.addEventListener("click", () => {
+    taskDiv.remove();
+  });
 
   //Append to UL
   taskList.appendChild(taskDiv);
@@ -44,3 +48,4 @@ function addTask(event) {
   //Clear Input value
   taskInput.value = "";
 }
+

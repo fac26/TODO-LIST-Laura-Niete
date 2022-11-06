@@ -100,7 +100,7 @@ input[type="checkbox"] + label.task-item {
   display: block;
   position: relative;
   padding-left: 4em;
-  font: 14px/20px 'Open Sans', Arial, sans-serif;
+  font: 14px 'Open Sans', Arial, sans-serif;
   cursor: pointer;
 }
 
@@ -112,6 +112,7 @@ input[type="checkbox"] + label.task-item:before {
   width: 20px;
   height: 20px;
   border: 1px solid #0f2027;
+  border-radius: 4em;
   position: absolute;
   left: 1em;
   top: 0;
@@ -134,4 +135,9 @@ input[type="checkbox"]:checked + label.task-item:before {
   margin-bottom: auto;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+input[type="checkbox"]:checked + label.task-item {
+text-decoration: line-through;
+color: grey;
 }

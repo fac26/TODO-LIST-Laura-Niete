@@ -56,7 +56,7 @@ test("Clicking delete will remove a task from the list", () => {
     //Imitate the user clicking the box
     checkbox[0].click();
 
-    equal(checkbox[0].checked, false,"Checkbox is checked when clicked");
+    equal(checkbox[0].checked, true,"Checkbox is checked when clicked");
 
     checkbox[0].click();
   });
