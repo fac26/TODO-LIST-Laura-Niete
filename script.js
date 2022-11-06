@@ -35,6 +35,20 @@ function addTask(event) {
   //Append to UL
   taskList.appendChild(taskDiv);
 
+  //Ensures there is always an input in the task box
+  const title = taskInput.value;
+
+  if (title.trim().length === 0) {
+    const error = document.getElementById("errorMsg");
+
+    error.textContent = "Please enter a task";
+    setTimeout(() => {
+      error.textContent = "";
+    }, 2000);
+  } else {
+    const task = taskInput.value;
+  }
+
   //Clear Input value
   taskInput.value = "";
 }
