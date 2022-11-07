@@ -27,7 +27,7 @@ test("Test to see if there is an input within the input field", () => {
   const error = document.querySelector("#errorMsg");
   equal(
     error.textContent,
-    "Please enter a task",
+    "Please enter a task!",
     "Displayed error message for empty input"
   );
   testList.innerHTML = "";

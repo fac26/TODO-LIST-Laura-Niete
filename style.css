@@ -24,9 +24,9 @@ form {
 }
 
 #errorMsg {
-  position: absolute;
-  left: 43%;
-  top: 35%;
+  position: fixed;
+  width: 100vw;
+  text-align: center;
   color: orangered;
 }
 
