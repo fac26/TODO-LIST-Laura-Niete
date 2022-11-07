@@ -9,7 +9,6 @@ function createTestTask(task) {
 }
 
 // ADD tests
-
 test("Submitting a new task adds it to the list", () => {
   createTestTask("Task1");
   equal(testList.children.length, 1, "One task is added to the list");
@@ -32,3 +31,28 @@ test("Test to see if there is an input within the input field", () => {
   );
   testList.innerHTML = "";
 });
+
+//Delete Test
+test("Clicking delete will remove a task from the list", () => {
+  createTestTask("Task1");
+  const trashBtns = document.querySelectorAll(".trash-btn");
+  trashBtns[0].click();
+  equal(trashBtns[0].offsetParent, null, "Task deleted from the list");
+});
+
+//Check completed Task
+test("Clicking the tick for each task will change it's styling to show it is completed", () => {
+  createTestTask("Task1");
+  const completedButtonTest = document.createElement("button");
+  completedButtonTest.click();
+  completedButtonTest.classList.add("completed");
+  equal(
+    completedButtonTest.classList.contains("completed"),
+    true,
+    "User can mark a task as completed"
+  );
+  testList.innerHTML = "";
+});
+
+//Filter Test
+//Need to still write this :(

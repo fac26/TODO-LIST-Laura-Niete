@@ -2,10 +2,12 @@
 const taskInput = document.getElementById("task-input");
 const taskBtn = document.getElementById("addtaskbtn");
 const taskList = document.getElementById("tasklist");
-const form = document.getElementById("form");
+const filterOption = document.querySelector(".filter-todo");
 
 //Event listeners
 taskBtn.addEventListener("click", addTask);
+taskList.addEventListener("click", checkCompleted);
+filterOption.addEventListener("click", filterTodo);
 
 taskInput.focus();
 
@@ -37,6 +39,9 @@ function addTask(event) {
     trashButton.innerHTML = '<i class="fas fa-trash"></i>';
     trashButton.classList.add("trash-btn");
     taskDiv.appendChild(trashButton);
+    trashButton.addEventListener("click", () => {
+      taskDiv.remove();
+    });
 
     //Append to UL
     taskList.appendChild(taskDiv);
@@ -44,12 +49,23 @@ function addTask(event) {
     //Clear Input value
     taskInput.value = "";
   }
+}
 
-  function displayError() {
-    const error = document.getElementById("errorMsg");
-    error.textContent = "Please enter a task!";
-    setTimeout(() => {
-      error.textContent = "";
-    }, 2000);
+//Display error message
+function displayError() {
+  const error = document.getElementById("errorMsg");
+  error.textContent = "Please enter a task!";
+  setTimeout(() => {
+    error.textContent = "";
+  }, 2000);
+}
+
+//Check items that have been completed
+function checkCompleted(e) {
+  const item = e.target;
+
+  if (item.classList[0] === "complete-btn") {
+    const todo = item.parentElement;
+    todo.classList.toggle("completed");
   }
 }
