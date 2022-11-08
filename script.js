@@ -12,7 +12,6 @@ filterOption.addEventListener("click", filterTodo);
 taskInput.focus()
 
 //number of items in list so far
-let count = 0;
 
 // ADD TASK
 function addTask(event) {
@@ -32,12 +31,10 @@ function addTask(event) {
     taskDiv.appendChild(newTask);
 
     //Check Mark button
-    count += 1;
-    const completeButton = document.createElement("INPUT");
-    completeButton.setAttribute("type", "checkbox");
-    completeButton.classList.add("complete-btn");
-    completeButton.id = `box-${count}`
-    taskDiv.insertBefore(completeButton, newTask)
+    const completedButton = document.createElement("button");
+    completedButton.innerHTML = '<i class="fas fa-check"></i>';
+    completedButton.classList.add("complete-btn");
+    taskDiv.appendChild(completedButton);
 
     //Delete button
     const trashButton = document.createElement("button");
