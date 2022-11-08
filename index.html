@@ -13,7 +13,7 @@
     <title>Todo List</title>
   </head>
   <body>
-    <header><h1>todos</h1></header>
+    <header><h1>To dos</h1></header>
     <div id="errorMsg"></div>
     <form id="form">
       <input
@@ -26,6 +26,13 @@
       <button type="submit" class="addtaskbtn" id="addtaskbtn">
         <i class="fas fa-plus-square"></i>
       </button>
+      <div class="select">
+        <select name="todos" class="filter-todo">
+          <option value="all">All</option>
+          <option value="completed">Completed</option>
+          <option value="incomplete">Incomplete</option>
+        </select>
+      </div>
     </form>
     <div class="task-container">
       <ul class="tasklist" id="tasklist"></ul>
