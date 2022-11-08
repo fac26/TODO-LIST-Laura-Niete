@@ -145,15 +145,3 @@ select {
   min-width: 200px;
   padding: 0rem 0.5rem;
 }
-
-
-/*Checkboxes styles*/
-input[type="checkbox"] { display: none; }
-
-input[type="checkbox"] + label.task-item {
-  display: block;
-  position: relative;
-  padding-left: 4em;
-  font: 14px 'Open Sans', Arial, sans-serif;
-  cursor: pointer;
-}
