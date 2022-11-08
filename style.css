@@ -1,3 +1,6 @@
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -139,4 +142,56 @@ select {
 .select:hover::after {
   background: white;
   color: #0f2027;
+  min-width: 200px;
+  padding: 0rem 0.5rem;
+}
+
+
+/*Checkboxes styles*/
+input[type="checkbox"] { display: none; }
+
+input[type="checkbox"] + label.task-item {
+  display: block;
+  position: relative;
+  padding-left: 4em;
+  font: 14px 'Open Sans', Arial, sans-serif;
+  cursor: pointer;
+}
+
+input[type="checkbox"] + label.task-item:last-child { margin-bottom: 0; }
+
+input[type="checkbox"] + label.task-item:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #0f2027;
+  border-radius: 4em;
+  position: absolute;
+  left: 1em;
+  top: 0;
+  opacity: .6;
+  margin-top: auto;
+  margin-bottom: auto;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+}
+
+input[type="checkbox"]:checked + label.task-item:before {
+  width: 10px;
+  top: -5px;
+  left: 1em;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  margin-top: auto;
+  margin-bottom: auto;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+input[type="checkbox"]:checked + label.task-item {
+text-decoration: line-through;
+color: grey;
 }

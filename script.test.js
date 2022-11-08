@@ -1,6 +1,8 @@
 const testInput = document.getElementById("task-input");
 const testBtn = document.getElementById("addtaskbtn");
 const testList = document.getElementById("tasklist");
+const deleteBtn = document.querySelector(".trash-btn");
+const completeButton = document.querySelector(".complete-btn");
 
 function createTestTask(task) {
   testInput.value = task;
@@ -33,6 +35,7 @@ test("Test to see if there is an input within the input field", () => {
 });
 
 //Delete Test
+
 test("Clicking delete will remove a task from the list", () => {
   createTestTask("Task1");
   const trashBtns = document.querySelectorAll(".trash-btn");
@@ -56,3 +59,20 @@ test("Clicking the tick for each task will change it's styling to show it is com
 
 //Filter Test
 //Need to still write this :(
+
+// Check completed //
+  // Imiatating a user clicking the checkbox
+  test("Checking an entry marks it as complete", () => {
+    createTestTask("Task1");
+    
+
+    const checkbox = document.getElementsByClassName("complete-btn");
+
+    //Imitate the user clicking the box
+    checkbox[0].click();
+
+    equal(checkbox[0].checked, true,"Checkbox is checked when clicked");
+
+    checkbox[0].click();
+  });
+

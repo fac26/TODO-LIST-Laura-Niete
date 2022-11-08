@@ -9,11 +9,16 @@ taskBtn.addEventListener("click", addTask);
 taskList.addEventListener("click", checkCompleted);
 filterOption.addEventListener("click", filterTodo);
 
-taskInput.focus();
+taskInput.focus()
+
+//number of items in list so far
+let count = 0;
 
 // ADD TASK
 function addTask(event) {
   event.preventDefault(); //Prevents page from refreshing when button is clicked
+
+count += 1;
 
   if (taskInput.value.trim().length === 0) {
     return displayError();
@@ -29,10 +34,11 @@ function addTask(event) {
     taskDiv.appendChild(newTask);
 
     //Check Mark button
-    const completedButton = document.createElement("button");
-    completedButton.innerHTML = '<i class="fas fa-check"></i>';
-    completedButton.classList.add("complete-btn");
-    taskDiv.appendChild(completedButton);
+    const completeButton = document.createElement("INPUT");
+    completeButton.setAttribute("type", "checkbox");
+    completeButton.classList.add("complete-btn");
+    completeButton.id = `box-${count}`
+    taskDiv.insertBefore(completeButton, newTask)
 
     //Delete button
     const trashButton = document.createElement("button");
@@ -68,4 +74,11 @@ function checkCompleted(e) {
     const todo = item.parentElement;
     todo.classList.toggle("completed");
   }
+  
+  //Append to UL
+  taskList.appendChild(taskDiv);
+
+  //Clear Input value
+  taskInput.value = "";
 }
+
