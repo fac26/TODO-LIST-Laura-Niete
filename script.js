@@ -18,8 +18,6 @@ let count = 0;
 function addTask(event) {
   event.preventDefault(); //Prevents page from refreshing when button is clicked
 
-count += 1;
-
   if (taskInput.value.trim().length === 0) {
     return displayError();
   } else {
@@ -34,6 +32,7 @@ count += 1;
     taskDiv.appendChild(newTask);
 
     //Check Mark button
+    count += 1;
     const completeButton = document.createElement("INPUT");
     completeButton.setAttribute("type", "checkbox");
     completeButton.classList.add("complete-btn");
