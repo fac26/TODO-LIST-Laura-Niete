@@ -2,16 +2,12 @@
 const taskInput = document.getElementById("task-input");
 const taskBtn = document.getElementById("addtaskbtn");
 const taskList = document.getElementById("tasklist");
-const filterOption = document.querySelector(".filter-todo");
 
 //Event listeners
 taskBtn.addEventListener("click", addTask);
 taskList.addEventListener("click", checkCompleted);
-filterOption.addEventListener("click", filterTodo);
 
-taskInput.focus()
-
-//number of items in list so far
+taskInput.focus();
 
 // ADD TASK
 function addTask(event) {
@@ -70,11 +66,4 @@ function checkCompleted(e) {
     const todo = item.parentElement;
     todo.classList.toggle("completed");
   }
-  
-  //Append to UL
-  taskList.appendChild(taskDiv);
-
-  //Clear Input value
-  taskInput.value = "";
 }
-
