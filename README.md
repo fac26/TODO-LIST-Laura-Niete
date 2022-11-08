@@ -19,16 +19,27 @@ This is a to-do list tracker. It allows users to create, complete and delete tas
 #### As a busy person, I want to:
 
 - [ ] See completed to-do filtered out from my list so that I can focus on what’s left to do
+
 ###### Optional
 #### As an organised person, I want to:
 - [ ] Save my to do list and be able to view my to do list on different days
+
 - [ ] Create different to-do lists e.g. shopping, chores, work tasks, etc.
+
 ---
 ## Acceptance Criteria 
 - [x] A working to-do list
-- [ ] Tests for (at least) each user story
+
+- [x] Tests for (at least) each user story
+
 - [ ] A responsive, mobile-first design
+
 - [ ] Ensure your app is accessible to as many different users as possible
 
-live: 
+---
+## How to use
+Try the app out [here](https://fac26.github.io/TODO-LIST-Laura-Niete/)
 
+To clone this repo to your local computer, copy and paste the following into your terminal:
+
+```git@github.com:fac26/TODO-LIST-Laura-Niete.git```
