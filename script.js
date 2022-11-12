@@ -2,12 +2,10 @@
 const taskInput = document.getElementById("task-input");
 const taskBtn = document.getElementById("addtaskbtn");
 const taskList = document.getElementById("tasklist");
-const filterOption = document.querySelector(".filter-todo");
 
 //Event listeners
 taskBtn.addEventListener("click", addTask);
 taskList.addEventListener("click", checkCompleted);
-filterOption.addEventListener("click", filterTodo);
 
 taskInput.focus();
 

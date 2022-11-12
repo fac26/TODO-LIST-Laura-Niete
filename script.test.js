@@ -55,7 +55,6 @@ test("Clicking the tick for each task will change it's styling to show it is com
 });
 
 //Filter Test
-
 test("Selecting all in the drop down menu shows all tasks", () => {
   createTestTask("Task1");
   const result = testList.children.length;
