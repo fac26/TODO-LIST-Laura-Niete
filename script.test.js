@@ -55,4 +55,34 @@ test("Clicking the tick for each task will change it's styling to show it is com
 });
 
 //Filter Test
-//Need to still write this :(
+
+test("Selecting all in the drop down menu shows all tasks", () => {
+  createTestTask("Task1");
+  const result = testList.children.length;
+  equal(result, 1, "All tasks that have been added should be shown");
+  testList.innerHTML = "";
+});
+
+test("Selecting complete in the drop down menu shows all completed tasks", () => {
+  createTestTask("Task1");
+  const completeBtn = document.querySelector(".complete-btn");
+  completeBtn.click();
+  const selectEl = document.getElementById("filter-todo");
+  let output = selectEl.options[selectEl.selectedIndex].value;
+  output = "completed";
+
+  equal(output, "completed", "Completed option can be selected");
+  equal(testList.children.length, 1, "Displays the one completed task");
+  testList.innerHTML = "";
+});
+
+test("Selecting incomplete in the drop down menu shows all incomplete tasks", () => {
+  createTestTask("Task1");
+  const selectEl = document.getElementById("filter-todo");
+  let output = selectEl.options[selectEl.selectedIndex].value;
+  output = "incomplete";
+
+  equal(output, "incomplete", "Incomplete option can be selected");
+  equal(testList.children.length, 1, "Displays the one incomplete task");
+  testList.innerHTML = "";
+});
