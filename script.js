@@ -67,3 +67,29 @@ function checkCompleted(e) {
     todo.classList.toggle("completed");
   }
 }
+
+//Filter function
+function filterTodo(e) {
+  const todos = taskList.childNodes;
+  todos.forEach(function (todo) {
+    switch (e.target.value) {
+      case "all":
+        todo.style.display = "flex";
+        break;
+      case "completed":
+        if (todo.classList.contains("completed")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none ";
+        }
+        break;
+      case "incomplete":
+        if (!todo.classList.contains("completed")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none ";
+        }
+        break;
+    }
+  });
+}
