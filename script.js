@@ -2,7 +2,6 @@
 const taskInput = document.getElementById("task-input");
 const taskBtn = document.getElementById("addtaskbtn");
 const taskList = document.getElementById("tasklist");
-const filterOption = document.querySelector(".filter-todo");
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", getTasks);
@@ -105,7 +104,6 @@ function deleteCheck(e) {
   //Delete task
   if (item.classList[0] === "trash-btn") {
     const todo = item.parentElement;
-    // Delete task animation
     removeLocalTodos(todo);
     todo.remove();
   }

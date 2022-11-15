@@ -62,7 +62,6 @@ test("Clicking the tick for each task will change it's styling to show it is com
 });
 
 //Filter Test
-
 test("Selecting all in the drop down menu shows all tasks", () => {
   createTestTask("Task5");
   const result = testList.children.length;
@@ -116,4 +115,3 @@ test("Deleting an item from local storage", () => {
   let localLength = testList.children.length;
   equal(localLength, 1, "Item deleted from local storage");
   clearTest();
-});
