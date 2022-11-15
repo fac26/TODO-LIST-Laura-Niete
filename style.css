@@ -108,6 +108,11 @@ form button:hover {
   opacity: 0.5;
 }
 
+.fall {
+  transform: translateX(8rem);
+  opacity: 0;
+}
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
