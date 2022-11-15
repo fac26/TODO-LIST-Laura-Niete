@@ -2,6 +2,13 @@
 
 This is a to-do list tracker. It allows users to create, complete and delete tasks from a list.
 
+## How to use
+Try the app out [here](https://fac26.github.io/TODO-LIST-Laura-Niete/)
+
+To clone this repo to your local computer, copy and paste the following into your terminal:
+
+```git@github.com:fac26/TODO-LIST-Laura-Niete.git```
+
 ## User stories
 #### As a busy person, I want to:
 
@@ -18,13 +25,13 @@ This is a to-do list tracker. It allows users to create, complete and delete tas
 ###### Stretch  
 #### As a busy person, I want to:
 
-- [ ] See completed to-do filtered out from my list so that I can focus on what’s left to do
+- [x] See completed to-do filtered out from my list so that I can focus on what’s left to do
 
 ###### Optional
 #### As an organised person, I want to:
-- [ ] Save my to do list and be able to view my to do list on different days
+- [x] Save my to do list and be able to view my to do list on different days
 
-- [ ] Create different to-do lists e.g. shopping, chores, work tasks, etc.
+- [x] Create different to-do lists e.g. shopping, chores, work tasks, etc.
 
 ---
 ## Acceptance Criteria 
@@ -32,14 +39,24 @@ This is a to-do list tracker. It allows users to create, complete and delete tas
 
 - [x] Tests for (at least) each user story
 
-- [ ] A responsive, mobile-first design
+- [x] A responsive, mobile-first design
 
-- [ ] Ensure your app is accessible to as many different users as possible
+- [x] Ensure your app is accessible to as many different users as possible
 
 ---
-## How to use
-Try the app out [here](https://fac26.github.io/TODO-LIST-Laura-Niete/)
+## Learning Outcomes
 
-To clone this repo to your local computer, copy and paste the following into your terminal:
+Testing 
+- We can test the functionality of our app
+- We can check that passing a given input into our tests returns the expected output
+- We can write tests to mimic the behaviour of a user performing different actions
 
-```git@github.com:fac26/TODO-LIST-Laura-Niete.git```
+JS 
+- We can write testable, modular functions
+- We can write functions that add, remove or modify DOM nodes
+- We can apply event listeners to HTML form elements
+- We can use scope to control what variables are accessible inside functions and blocks
+
+Design 
+- We can use CSS grid to create complex layouts
+- We can use CSS grid to make layouts that adapt to the viewport size
