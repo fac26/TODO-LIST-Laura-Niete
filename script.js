@@ -2,6 +2,7 @@
 const taskInput = document.getElementById("task-input");
 const taskBtn = document.getElementById("addtaskbtn");
 const taskList = document.getElementById("tasklist");
+const filterOption = document.querySelector(".filter-todo");
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", getTasks);
