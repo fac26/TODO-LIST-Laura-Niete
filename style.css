@@ -30,6 +30,12 @@ form {
   color: orangered;
 }
 
+.input-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
 input::placeholder {
   opacity: 0.3;
 }
@@ -144,4 +150,30 @@ select {
 .select:hover::after {
   background: white;
   color: #0f2027;
+}
+
+/*Media queries*/
+@media screen and (max-width: 1060px) {
+  .tasklist {
+    width: 21em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .tasklist {
+    width: 100%;
+  }
+  form {  
+    min-height: 25vh;
+    flex-direction: column;
+    width: 100%;
+  }
+  .input-div, .select {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  .task-input, .filter-todo {
+    flex-grow: 1;
+  }
 }

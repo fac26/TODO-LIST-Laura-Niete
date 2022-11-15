@@ -9,6 +9,18 @@ function createTestTask(task) {
   testInput.value = "";
 }
 
+function createTestNumberTask(task) {
+  testInput.value = 1232131;
+  testBtn.click();
+  testInput.value = "";
+}
+
+function createLengthTestTask(task) {
+  testInput.value = "abcdefghijklmnopqrstuwxyzabcedefghij";
+  testBtn.click();
+  testInput.value = "";
+}
+
 function clearTest() {
   testList.innerHTML = "";
   localStorage.clear();
@@ -38,6 +50,30 @@ test("Test to see if there is an input within the input field", () => {
   clearTest();
 });
 
+test("Test to see if input is prevented when user only enters numbers", () => {
+  createTestNumberTask("");
+  const error = document.querySelector("#errorMsg");
+  equal(
+    error.textContent,
+    "Tasks should have some text, not just numbers.",
+    "Displayed error message for empty input"
+  );
+  testList.innerHTML = "";
+  clearTest();
+});
+
+test("Test to see if input is prevented when user enters more than 30 characters", () => {
+  createLengthTestTask("");
+  const error = document.querySelector("#errorMsg");
+  equal(
+    error.textContent,
+    "Please keep your task name under 30 characters.",
+    "Displayed error message for empty input"
+  );
+  testList.innerHTML = "";
+  clearTest();
+});
+
 //Delete Test
 test("Clicking delete will remove a task from the list", () => {
   createTestTask("Task3");
@@ -59,6 +95,22 @@ test("Clicking the tick for each task will change it's styling to show it is com
     "User can mark a task as completed"
   );
   clearTest();
+});
+
+//Unchecking completed Task
+test("Unclicking the tick after initial tick for each task will change it's styling to show it is not completed", () => {
+  createTestTask("Task1");
+  const completedButtonTest = document.createElement("button");
+  completedButtonTest.click();
+  completedButtonTest.classList.add("completed");
+  completedButtonTest.click();
+  completedButtonTest.classList.remove("completed");
+  equal(
+    completedButtonTest.classList.contains("completed"),
+    false,
+    "User can unmark a task as completed"
+  );
+  testList.innerHTML = "";
 });
 
 //Filter Test
@@ -115,3 +167,4 @@ test("Deleting an item from local storage", () => {
   let localLength = testList.children.length;
   equal(localLength, 1, "Item deleted from local storage");
   clearTest();
+});
