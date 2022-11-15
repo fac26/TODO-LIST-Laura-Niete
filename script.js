@@ -5,19 +5,28 @@ const taskList = document.getElementById("tasklist");
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", getTasks);
-taskBtn.addEventListener("click", addTask);
+taskBtn.addEventListener("click", validateTask);
 taskList.addEventListener("click", deleteCheck);
 filterOption.addEventListener("click", filterTodo);
 
 taskInput.focus();
 
 // ADD TASK
-function addTask(event) {
+function validateTask(event) {
   event.preventDefault(); //Prevents page from refreshing when button is clicked
 
-  if (taskInput.value.trim().length === 0) {
-    return displayError();
+  if (taskInput.value.trim().length == 0)  {
+    displayError();
+  } else if (taskInput.value.length > 30) {
+    displayTooLongError();
+  }  else if (!isNaN(taskInput.value)) {
+    notJustNumbers();
   } else {
+    return addTask();
+  }
+}
+
+function addTask() {
     //Dynamically creating a new div for tasks and buttons to sit inside. This is what will be displayed when the button is clicked
     const taskDiv = document.createElement("div");
     taskDiv.classList.add("task");
@@ -41,14 +50,12 @@ function addTask(event) {
     trashButton.innerHTML = '<i class="fas fa-trash"></i>';
     trashButton.classList.add("trash-btn");
     taskDiv.appendChild(trashButton);
-    //});
 
     //Append to UL
     taskList.appendChild(taskDiv);
 
     //Clear Input value
     taskInput.value = "";
-  }
 }
 
 //Display error message
@@ -71,6 +78,22 @@ function checkCompleted(e) {
   }
 }
 */
+
+function displayTooLongError() {
+  const error = document.getElementById("errorMsg");
+  error.textContent = "Please keep your task name under 30 characters.";
+  setTimeout(() => {
+    error.textContent = "";
+  }, 2000);
+}
+
+function notJustNumbers() {
+  const error = document.getElementById("errorMsg");
+  error.textContent = "Tasks should have some text, not just numbers.";
+  setTimeout(() => {
+    error.textContent = "";
+  }, 2000);
+}
 
 //Filter function
 function filterTodo(e) {
