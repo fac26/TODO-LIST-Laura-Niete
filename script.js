@@ -19,9 +19,9 @@ function validateTask(event) {
   if (taskInput.value.trim().length == 0)  {
     displayError();
   } else if (taskInput.value.length > 30) {
-    displayTooLongError();
+    ErrorMessageMaxChar();
   }  else if (!isNaN(taskInput.value)) {
-    notJustNumbers();
+    ErrorMessageForNumberInput();
   } else {
     return addTask();
   }
@@ -80,7 +80,7 @@ function checkCompleted(e) {
 }
 */
 
-function displayTooLongError() {
+function ErrorMessageMaxChar() {
   const error = document.getElementById("errorMsg");
   error.textContent = "Please keep your task name under 30 characters.";
   setTimeout(() => {
@@ -88,7 +88,7 @@ function displayTooLongError() {
   }, 2000);
 }
 
-function notJustNumbers() {
+function ErrorMessageForNumberInput() {
   const error = document.getElementById("errorMsg");
   error.textContent = "Tasks should have some text, not just numbers.";
   setTimeout(() => {
