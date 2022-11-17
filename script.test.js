@@ -9,18 +9,6 @@ function createTestTask(task) {
   testInput.value = "";
 }
 
-function createTestNumberTask(task) {
-  testInput.value = 1232131;
-  testBtn.click();
-  testInput.value = "";
-}
-
-function createLengthTestTask(task) {
-  testInput.value = "abcdefghijklmnopqrstuwxyzabcedefghij";
-  testBtn.click();
-  testInput.value = "";
-}
-
 function clearTest() {
   testList.innerHTML = "";
   localStorage.clear();
@@ -51,26 +39,24 @@ test("Test to see if there is an input within the input field", () => {
 });
 
 test("Test to see if input is prevented when user only enters numbers", () => {
-  createTestNumberTask("");
+  createTestTask(1232131);
   const error = document.querySelector("#errorMsg");
   equal(
     error.textContent,
     "Tasks should have some text, not just numbers.",
     "Displayed error message for empty input"
   );
-  testList.innerHTML = "";
   clearTest();
 });
 
 test("Test to see if input is prevented when user enters more than 30 characters", () => {
-  createLengthTestTask("");
+  createTestTask("abcdefghijklmnopqrstuwxyzabcedefghij");
   const error = document.querySelector("#errorMsg");
   equal(
     error.textContent,
     "Please keep your task name under 30 characters.",
     "Displayed error message for empty input"
   );
-  testList.innerHTML = "";
   clearTest();
 });
 
@@ -80,7 +66,6 @@ test("Clicking delete will remove a task from the list", () => {
   const trashBtns = document.querySelectorAll(".trash-btn");
   trashBtns[0].click();
   equal(trashBtns[0].offsetParent, null, "Task deleted from the list");
-  localStorage.clear();
 });
 
 //Check completed Task
@@ -98,8 +83,8 @@ test("Clicking the tick for each task will change it's styling to show it is com
 });
 
 //Unchecking completed Task
-test("Unclicking the tick after initial tick for each task will change it's styling to show it is not completed", () => {
-  createTestTask("Task1");
+test("Clicking the tick on a completed task will change the styling to show it is incomplete", () => {
+  createTestTask("Task5");
   const completedButtonTest = document.createElement("button");
   completedButtonTest.click();
   completedButtonTest.classList.add("completed");
@@ -115,14 +100,14 @@ test("Unclicking the tick after initial tick for each task will change it's styl
 
 //Filter Test
 test("Selecting all in the drop down menu shows all tasks", () => {
-  createTestTask("Task5");
+  createTestTask("Task6");
   const result = testList.children.length;
   equal(result, 1, "All tasks that have been added should be shown");
   clearTest();
 });
 
 test("Selecting complete in the drop down menu shows all completed tasks", () => {
-  createTestTask("Task6");
+  createTestTask("Task7");
   const completeBtn = document.querySelector(".complete-btn");
   completeBtn.click();
   const selectEl = document.getElementById("filter-todo");
@@ -135,7 +120,7 @@ test("Selecting complete in the drop down menu shows all completed tasks", () =>
 });
 
 test("Selecting incomplete in the drop down menu shows all incomplete tasks", () => {
-  createTestTask("Task7");
+  createTestTask("Task8");
   const selectEl = document.getElementById("filter-todo");
   let output = selectEl.options[selectEl.selectedIndex].value;
   output = "incomplete";
@@ -147,21 +132,21 @@ test("Selecting incomplete in the drop down menu shows all incomplete tasks", ()
 
 // LOCAL STORAGE Tests
 test("Checking for items in local storage", () => {
-  let a = (localStorage.testItem = "Task8");
-  equal(a, "Task8", "Checked if item in local storage");
+  let a = (localStorage.testItem = "Task9");
+  equal(a, "Task9", "Checked if item in local storage");
   localStorage.clear();
 });
 
 test("Adding an item to local storage", () => {
-  createTestTask("Task9");
+  createTestTask("Task10");
   let localLength = testList.children.length;
   equal(localLength, 1, "Item added to local storage");
   clearTest();
 });
 
 test("Deleting an item from local storage", () => {
-  createTestTask("Task10");
   createTestTask("Task11");
+  createTestTask("Task12");
   const trashBtns = document.querySelectorAll(".trash-btn");
   trashBtns[1].click();
   let localLength = testList.children.length;
