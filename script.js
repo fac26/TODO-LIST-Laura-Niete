@@ -4,6 +4,7 @@ const taskBtn = document.getElementById("addtaskbtn");
 const taskList = document.getElementById("tasklist");
 const filterOption = document.querySelector(".filter-todo");
 const form = document.getElementById("form");
+const error = document.getElementById("errorMsg");
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", getTasks);
@@ -18,10 +19,16 @@ function validateTask(event) {
   if (taskInput.value.length == 0) {
     displayError();
     taskInput.focus();
+    error.classList.remove("hidden");
   } else if (taskInput.value.length > 30) {
     errMsgMaxChar();
+    taskInput.value = "";
+    taskInput.focus();
+    error.classList.remove("hidden");
   } else if (!isNaN(taskInput.value)) {
     errMsgNumInput();
+    taskInput.focus();
+    error.classList.remove("hidden");
   } else {
     return addTask();
   }
@@ -61,7 +68,6 @@ function addTask() {
 
 //Display error message
 function displayError() {
-  const error = document.getElementById("errorMsg");
   error.textContent = "Please enter a task!";
   setTimeout(() => {
     error.textContent = "";
@@ -69,7 +75,6 @@ function displayError() {
 }
 
 function errMsgMaxChar() {
-  const error = document.getElementById("errorMsg");
   error.textContent = "Please keep your task name under 30 characters.";
   setTimeout(() => {
     error.textContent = "";
@@ -77,7 +82,6 @@ function errMsgMaxChar() {
 }
 
 function errMsgNumInput() {
-  const error = document.getElementById("errorMsg");
   error.textContent = "Tasks should have some text, not just numbers.";
   setTimeout(() => {
     error.textContent = "";

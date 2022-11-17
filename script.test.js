@@ -30,6 +30,7 @@ test("Test to check input field is cleared after a task is added", () => {
 test("Test to see if there is an input within the input field", () => {
   createTestTask("");
   const error = document.querySelector("#errorMsg");
+  error.classList.add("hidden");
   equal(
     error.textContent,
     "Please enter a task!",
@@ -41,6 +42,7 @@ test("Test to see if there is an input within the input field", () => {
 test("Test to see if input is prevented when user only enters numbers", () => {
   createTestTask(1232131);
   const error = document.querySelector("#errorMsg");
+  error.classList.add("hidden");
   equal(
     error.textContent,
     "Tasks should have some text, not just numbers.",
@@ -52,6 +54,7 @@ test("Test to see if input is prevented when user only enters numbers", () => {
 test("Test to see if input is prevented when user enters more than 30 characters", () => {
   createTestTask("abcdefghijklmnopqrstuwxyzabcedefghij");
   const error = document.querySelector("#errorMsg");
+  error.classList.add("hidden");
   equal(
     error.textContent,
     "Please keep your task name under 30 characters.",

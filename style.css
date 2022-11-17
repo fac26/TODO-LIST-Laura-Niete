@@ -114,9 +114,8 @@ form button:hover {
   opacity: 0.5;
 }
 
-.fall {
-  transform: translateX(8rem);
-  opacity: 0;
+.hidden {
+  display: none;
 }
 
 select {
@@ -163,18 +162,20 @@ select {
   .tasklist {
     width: 100%;
   }
-  form {  
+  form {
     min-height: 25vh;
     flex-direction: column;
     width: 100%;
   }
-  .input-div, .select {
+  .input-div,
+  .select {
     display: flex;
     flex-direction: row;
     width: 100%;
     max-width: 100vw;
   }
-  .task-input, .filter-todo {
+  .task-input,
+  .filter-todo {
     flex-grow: 1;
   }
   .task-input {
