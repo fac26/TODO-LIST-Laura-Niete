@@ -3,6 +3,8 @@ const taskInput = document.getElementById("task-input");
 const taskBtn = document.getElementById("addtaskbtn");
 const taskList = document.getElementById("tasklist");
 const filterOption = document.querySelector(".filter-todo");
+const form = document.getElementById("form");
+const error = document.getElementById("errorMsg");
 
 //Event listeners
 document.addEventListener("DOMContentLoaded", getTasks);
@@ -10,86 +12,76 @@ taskBtn.addEventListener("click", validateTask);
 taskList.addEventListener("click", deleteCheck);
 filterOption.addEventListener("click", filterTodo);
 
-taskInput.focus();
-
 // ADD TASK
 function validateTask(event) {
   event.preventDefault(); //Prevents page from refreshing when button is clicked
 
-  if (taskInput.value.trim().length == 0)  {
+  if (taskInput.value.length == 0) {
     displayError();
+    taskInput.focus();
+    error.classList.remove("hidden");
   } else if (taskInput.value.length > 30) {
-    ErrorMessageMaxChar();
-  }  else if (!isNaN(taskInput.value)) {
-    ErrorMessageForNumberInput();
+    errMsgMaxChar();
+    taskInput.value = "";
+    taskInput.focus();
+    error.classList.remove("hidden");
+  } else if (!isNaN(taskInput.value)) {
+    errMsgNumInput();
+    taskInput.focus();
+    error.classList.remove("hidden");
   } else {
     return addTask();
   }
 }
 
 function addTask() {
-    //Dynamically creating a new div for tasks and buttons to sit inside. This is what will be displayed when the button is clicked
-    const taskDiv = document.createElement("div");
-    taskDiv.classList.add("task");
+  //Dynamically creating a new div for tasks and buttons to sit inside. This is what will be displayed when the button is clicked
+  const taskDiv = document.createElement("div");
+  taskDiv.classList.add("task");
 
-    //Create list items
-    const newTask = document.createElement("li");
-    newTask.innerText = taskInput.value;
-    newTask.classList.add("task-item");
-    taskDiv.appendChild(newTask);
+  //Create list items
+  const newTask = document.createElement("li");
+  newTask.innerText = taskInput.value;
+  newTask.classList.add("task-item");
+  taskDiv.appendChild(newTask);
 
-    //Add task to Local Storage
-    saveLocalTasks(taskInput.value);
-    //Check Mark button
-    const completedButton = document.createElement("button");
-    completedButton.innerHTML = '<i class="fas fa-check"></i>';
-    completedButton.classList.add("complete-btn");
-    taskDiv.appendChild(completedButton);
+  //Add task to Local Storage
+  saveLocalTasks(taskInput.value);
+  //Check Mark button
+  const completedButton = document.createElement("button");
+  completedButton.innerHTML = '<i class="fas fa-check"></i>';
+  completedButton.classList.add("complete-btn");
+  taskDiv.appendChild(completedButton);
 
-    //Delete button
-    const trashButton = document.createElement("button");
-    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
-    trashButton.classList.add("trash-btn");
-    taskDiv.appendChild(trashButton);
+  //Delete button
+  const trashButton = document.createElement("button");
+  trashButton.innerHTML = '<i class="fas fa-trash"></i>';
+  trashButton.classList.add("trash-btn");
+  taskDiv.appendChild(trashButton);
 
-    //Append to UL
-    taskList.appendChild(taskDiv);
+  //Append to UL
+  taskList.appendChild(taskDiv);
 
-    //Clear Input value
-    taskInput.value = "";
+  //Clear Input value
+  taskInput.value = "";
 }
 
 //Display error message
 function displayError() {
-  const error = document.getElementById("errorMsg");
   error.textContent = "Please enter a task!";
   setTimeout(() => {
     error.textContent = "";
   }, 2000);
 }
 
-//Check items that have been completed
-/*
-function checkCompleted(e) {
-  const item = e.target;
-
-  if (item.classList[0] === "complete-btn") {
-    const todo = item.parentElement;
-    todo.classList.toggle("completed");
-  }
-}
-*/
-
-function ErrorMessageMaxChar() {
-  const error = document.getElementById("errorMsg");
+function errMsgMaxChar() {
   error.textContent = "Please keep your task name under 30 characters.";
   setTimeout(() => {
     error.textContent = "";
   }, 2000);
 }
 
-function ErrorMessageForNumberInput() {
-  const error = document.getElementById("errorMsg");
+function errMsgNumInput() {
   error.textContent = "Tasks should have some text, not just numbers.";
   setTimeout(() => {
     error.textContent = "";
